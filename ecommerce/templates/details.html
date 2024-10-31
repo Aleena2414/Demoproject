@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5" style="margin-bottom:100px;">
+  <div class="card mb-3 mx-auto" style="max-width: 70%;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{details.image.url}}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{details.name}}</h5>
+          <p class="card-text">{{details.desc}}</p>
+          <p class="card-text">Price:{{details.price}}</p>
+          <p class="card-text">Stock:{{details.stock}}</p>
+          {% if user.is_superuser == True %}
+          {% if details.stock > 0 %}
+          <h5>Product in stock</h5>
+          <a href="{% url 'shop:addstock' details.id %}" class="btn btn-danger fw-bold mt-3 mb-2 texty-center">Add Stock</a>
+          {% else %}
+          <h5>Product out of stock</h5>
+           <a href="{% url 'shop:addstock' details.id %}" class="btn btn-danger fw-bold mt-3 mb-2 texty-center">Add Stock</a>
+          {% endif %}
+          {% else %}
+          {% if details.stock > 0 %}
+          <h5>In stock</h5>
+           <a href="{% url 'cart:cart' details.id %}" class="btn btn-danger fw-bold mt-3 mb-2 texty-center">Add To Cart</a>
+          {% else %}
+          <h5>Out of stock</h5>
+          {% endif %}
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

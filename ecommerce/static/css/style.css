@@ -1,0 +1,13 @@
+body
+{
+background-color:#6323A7;
+}
+.footer
+{
+position:fixed;
+bottom:0;
+left:0;
+background:yellow;
+height:40px;
+width:100%;
+}

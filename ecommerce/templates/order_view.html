@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5 mb-5" style="margin-bottom:100px;">
+  <div class="row text-center">
+  <h3 class="text-center text-warning">Name of the Customer:<i class="text capitalize text-decoration-underline">{{user.username}}</i> </h3>
+    {% for i in order_view %}
+    <div class="card mb-3 mt-3 mx-auto border border-2 border-warning shadow" style="max-width: 800px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+
+      <img src="{{i.product.image.url}}" class="img-fluid rounded-start mt-2 mb-2" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Product name:{{i.product.name}}</h5>
+        <p class="card-text text-warning">Price:<span class="text-warning">{{i.product.price}}</span></p>
+        <h6 class="card-text text-warning">Quantity:{{i.no_of_items}}</h6>
+        <h6 class="card-text text-warning">Delivery address:{{i.address}}</h6>
+        <h6 class="card-text text-warning">Phone:{{i.phone_no}}</h6>
+        <h6 class="card-text text-warning">Order on:{{i.ordered_date}}</h6>
+        <h6 class="card-text text-warning">Delivery status:<span class="text-danger">{{i.delivery_status}}</span></h6>
+
+      </div>
+    </div>
+  </div>
+      {% endfor %}
+  </div>
+</div>
+
+
+    {% endblock %}
